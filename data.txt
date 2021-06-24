@@ -1,0 +1,52 @@
+
+api.get("GET", "api/v1", {
+    total_data: 50,
+    fields: {
+        "name": {
+            "type": "string",
+            "max_length": 20,
+        },
+        "age": {
+            "type": "int",
+            "range": "0-90"
+        },
+        "cpf": {
+            "type": "cpf",
+            "unique": "true"
+        },
+        "born_date": {
+            "type": "date",
+            "range": "1980-01-01 2021-01-01"
+        },
+        "phone": {
+            "type": "string",
+            "mask": "(XX) XXXXX-XXXX"
+        }
+    }
+})
+
+
+
+api.get("GET", "api/v1", {
+    total_data: 50,
+    fields: {
+        "name": {
+            "type": "string",
+            "length": 20,
+        },
+        "price": {
+            "type": "float",
+            "range": "0-90"
+        },
+        "description": {
+            "type": "string",
+            "lorem_ipsum": "true"
+        },
+        "created_at": {
+            "type": "date",
+            "range": "1980-01-01 2021-01-01"
+        },
+    }
+})
+
+
