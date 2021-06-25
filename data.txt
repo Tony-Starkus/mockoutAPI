@@ -1,33 +1,38 @@
 
-api.get("GET", "api/v1", {
-    total_data: 50,
-    fields: {
-        "name": {
-            "type": "string",
-            "max_length": 20,
-        },
-        "age": {
-            "type": "int",
-            "range": "0-90"
-        },
-        "cpf": {
-            "type": "cpf",
-            "unique": "true"
-        },
-        "born_date": {
-            "type": "date",
-            "range": "1980-01-01 2021-01-01"
-        },
-        "phone": {
-            "type": "string",
-            "mask": "(XX) XXXXX-XXXX"
-        }
-    }
+api.post(api/v1", {
+	"total_data": 50,
+	"fields": [
+		{
+			"field_name": "name",
+			"type": "string",
+			"max_length": 20
+		},
+		{
+			"field_name": "age",
+			"type": "int",
+			"range": "0-90"
+		},
+		{
+			"field_name": "cpf",
+			"type": "cpf",
+			"unique": "true"
+		},
+		{
+			"field_name": "born_date",
+			"type": "date",
+			"range": "1980-01-01 2021-01-01"
+		},
+		{
+			"field_name": "phone",
+			"type": "string",
+			"mask": "(XX) XXXXX-XXXX"
+		}
+	]
 })
 
 
 
-api.get("GET", "api/v1", {
+api.post(api/v1", {
     total_data: 50,
     fields: {
         "name": {
