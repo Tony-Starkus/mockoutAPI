@@ -18,13 +18,18 @@ class MockoutAPI(APIView):
                 Response(status=200)
             else:
                 response = []
+
+                # Start interation using total data to return
                 for i in range(serializer.data['total_data']):
+
+                    # Object data
                     data = {}
+
+                    # Start iteration over object fields
                     for field in serializer.data['fields']:
                         if field['type'] == 'string':
-                            data.update({field['field_name']: build_string("", "")})
+                            data.update({field['field_name']: build_string(field)})
 
-                        print(field)
                         response.append(data)
                 return Response(data={"data": response}, status=200)
 
