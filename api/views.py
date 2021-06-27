@@ -2,14 +2,16 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .serializers import MockoutAPISerializer
-from .factory import *
+from .factory.string import build_string
+from .factory.cpf import build_cpf
+from .factory.integer import build_integer
 
 
 class MockoutAPI(APIView):
     serializer_class = MockoutAPISerializer
 
     def get(self, request):
-        response = None
+        response = []
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             if serializer.data['total_data'] == 0:
@@ -17,7 +19,6 @@ class MockoutAPI(APIView):
             elif serializer.data['total_data'] == 1:
                 Response(status=200)
             else:
-                response = []
 
                 # Start interation using total data to return
                 for i in range(serializer.data['total_data']):
@@ -29,8 +30,10 @@ class MockoutAPI(APIView):
                     for field in serializer.data['fields']:
                         if field['type'] == 'string':
                             data.update({field['field_name']: build_string(field)})
+                        elif field['type'] == 'int':
+                            data.update({field['field_name']: build_integer(field)})
 
-                        response.append(data)
+                    response.append(data)
                 return Response(data={"data": response}, status=200)
 
         return Response(data={"teste": "ok"}, status=200)

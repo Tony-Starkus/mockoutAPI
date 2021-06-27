@@ -6,6 +6,9 @@ def values_validation(field: dict):
     if 'max_length' in field and type(field['max_length']) is not int:
         raise ValidationError("The field max_length must be an integer")
 
+    if 'mask' in field and type(field['max']) is not str:
+        raise ValidationError("The field mask must be a string")
+
 
 def build_string(field: dict):
     print(f"{field=}")
@@ -17,14 +20,22 @@ def build_string(field: dict):
     # String max length
     max_length = field['max_length'] if 'max_length' in field else 20
 
+    # String mask
+    mask = field['mask'] if 'mask' in field else None
+
     # Variable that safe data to return
     data = ""
 
-    # Generating random string using letters tuple
-    for i in range(0, randint(0, max_length)):
-        if randint(1, 100) <= 20 and i != 0 and data[i - 1] != " ":
-            data += " "
-        else:
-            data += choice(letters)
+    if mask:
+        for p in mask:
+            data += str(randint(0, 9)) if p == 'X' else p
+    else:
+
+        # Generating random string using letters tuple
+        for i in range(0, randint(0, max_length)):
+            if randint(1, 100) <= 20 and i != 0 and data[i - 1] != " ":
+                data += " "
+            else:
+                data += choice(letters)
 
     return data
