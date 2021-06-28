@@ -4,15 +4,15 @@ from rest_framework.exceptions import ValidationError
 
 def values_validation(field: dict):
     if 'max_length' in field and type(field['max_length']) is not int:
-        raise ValidationError("The field max_length must be an integer")
+        raise ValidationError("The attribute 'max_length' must be an integer")
 
-    if 'mask' in field and type(field['max']) is not str:
-        raise ValidationError("The field mask must be a string")
+    if 'mask' in field and type(field['mask']) is not str:
+        raise ValidationError("The attribute 'mask' must be a string")
 
 
 def build_string(field: dict):
-    print(f"{field=}")
-    print(f"{type(field)=}")
+    # print(f"{field=}")
+    # print(f"{type(field)=}")
     values_validation(field)
 
     letters = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u')

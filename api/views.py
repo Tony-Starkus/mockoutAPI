@@ -5,6 +5,7 @@ from .serializers import MockoutAPISerializer
 from .factory.string import build_string
 from .factory.cpf import build_cpf
 from .factory.integer import build_integer
+from .factory.date import build_date
 
 
 class MockoutAPI(APIView):
@@ -32,8 +33,13 @@ class MockoutAPI(APIView):
                             data.update({field['field_name']: build_string(field)})
                         elif field['type'] == 'int':
                             data.update({field['field_name']: build_integer(field)})
+                        elif field['type'] == 'cpf':
+                            data.update({field['field_name']: build_cpf(field)})
+                        elif field['type'] == 'date':
+                            data.update({field['field_name']: build_date(field)})
 
                     response.append(data)
+
                 return Response(data={"data": response}, status=200)
 
         return Response(data={"teste": "ok"}, status=200)
