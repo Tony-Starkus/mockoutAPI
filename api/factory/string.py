@@ -2,7 +2,7 @@ from random import choice, randint
 from rest_framework.exceptions import ValidationError
 
 
-def values_validation(field: dict):
+def values_validation(field: dict) -> None:
     if 'max_length' in field and type(field['max_length']) is not int:
         raise ValidationError("The attribute 'max_length' must be an integer")
 
@@ -10,9 +10,7 @@ def values_validation(field: dict):
         raise ValidationError("The attribute 'mask' must be a string")
 
 
-def build_string(field: dict):
-    # print(f"{field=}")
-    # print(f"{type(field)=}")
+def build_string(field: dict) -> str:
     values_validation(field)
 
     letters = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u')

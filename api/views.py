@@ -13,6 +13,10 @@ class MockoutAPI(APIView):
 
     def get(self, request):
         response = []
+
+        # List of used cpf's
+        cpf_list = list()
+
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             if serializer.data['total_data'] == 0:
@@ -34,7 +38,7 @@ class MockoutAPI(APIView):
                         elif field['type'] == 'int':
                             data.update({field['field_name']: build_integer(field)})
                         elif field['type'] == 'cpf':
-                            data.update({field['field_name']: build_cpf(field)})
+                            data.update({field['field_name']: build_cpf(field, cpf_list)})
                         elif field['type'] == 'date':
                             data.update({field['field_name']: build_date(field)})
 

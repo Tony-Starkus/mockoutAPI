@@ -2,7 +2,7 @@ from random import randint
 from rest_framework.exceptions import ValidationError
 
 
-def values_validation(field: dict):
+def values_validation(field: dict) -> None:
     if 'range' in field:
         if type(field['range']) is not str:
             raise ValidationError("The attribute 'range' must be a string")
@@ -13,7 +13,7 @@ def values_validation(field: dict):
             raise ValidationError(error.__str__() + " in range field")
 
 
-def build_integer(field: dict):
+def build_integer(field: dict) -> int:
     # print(f"{field=}")
     # print(f"{type(field)=}")
     values_validation(field)
