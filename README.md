@@ -67,10 +67,19 @@ It's useful when you need many data to test your frontend layout, like tables an
 `$ python manage.py runserver`
 
 
-## Routes
+## Route
 For all posts requests, use this route:  
 `<url>/api/v1`  
 \<url> is where django server is runing in your machine
+
+
+## Body
+These are the attributes you can pass in the body of the request.
+
+| Attribute Name | Type |  Description  |
+| :---           | :--- | :---:          |
+|  total_data |  int | Define how many data you want to receive.  |
+| fields        | array  | Array of objects. Each object is a field. |
 
 
 ## Building fields
