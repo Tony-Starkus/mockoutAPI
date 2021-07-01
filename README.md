@@ -70,7 +70,7 @@ It's useful when you need many data to test your frontend layout, like tables an
 ## Routes
 For all posts requests, use this route:  
 `<url>/api/v1`  
-<url> is where django server is runing in your machine
+\<url> is where django server is runing in your machine
 
 
 ## Building fields
@@ -81,6 +81,7 @@ All fields requires 2 attributes:
 | :---           | :--- | :---:          |
 |  field_name |  string | The name of the field.  |
 | type        | string  | The type of the field. |
+
 For each type, there is attributes that defines how to build the field data.
 
 ### string
