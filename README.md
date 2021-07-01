@@ -36,7 +36,7 @@ It's useful when you need many data to test your frontend layout, like tables an
  ]
 }
 ```
-#####Return
+##### Return
 ```
 {
   "data": [
@@ -73,18 +73,38 @@ For all posts requests, use this route:
 <url> is where django server is runing in your machine
 
 
-## Build fields
+## Building fields
 In this section, you see the attributes to build the fields.  
-All fields requires 2 attributes:  
-field_name: name of the field  
-type: the type of the field.  
-<br>
-For each type, there is attributes that defines how to build the field data.
+All fields requires 2 attributes:
 
-### String
 | Attribute Name | Type |  Description  |
 | :---           | :--- | :---:          |
-|  max_length |  integer | Define the string max length. Default is 20 |
+|  field_name |  string | The name of the field.  |
+| type        | string  | The type of the field. |
+For each type, there is attributes that defines how to build the field data.
+
+### string
+| Attribute Name | Type |  Description  |
+| :---           | :--- | :---:          |
+|  max_length |  integer | Define the string max length. Default is 20. |
+| mask        | string   | Define a mask for the string. Use X letter to replace with a random number. Example: XX-X will be something like 35-7.
+
+### int
+| Attribute Name | Type |  Description  |
+| :---           | :--- | :---:          |
+|  range |  string | Define the range of random numbers. Default is "0-100".  |
+
+### cpf
+| Attribute Name | Type |  Description  |
+| :---           | :--- | :---:          |
+|  unique |  boolean | Define if cpf must be unique. Default is false. |
+| formated | boolean | Format cpf like XXX.XXX.XXX-XX. Default is false. |
+
+### date
+| Attribute Name | Type |  Description  |
+| :---           | :--- | :---:          |
+|  range |  string | Required. Define the range of generated dates. The format is "Y-m-d Y-m-d". Left date in the format can't be greater than the right date. |
+
 
 ## Frameworks/Bibliotecas
 - Django
