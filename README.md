@@ -104,6 +104,12 @@ For each type, there is attributes that defines how to build the field data.
 | :---           | :--- | :---:          |
 |  range |  string | Define the range of random numbers. Default is "0-100".  |
 
+### float
+| Attribute Name | Type |  Description  |
+| :---           | :--- | :---:          |
+|  range |  string | Define the range of random numbers. Default is "0-100".  |
+| decimal_places | integer | Define float decimal places. Default is 2. Max is 10. |
+
 ### cpf
 | Attribute Name | Type |  Description  |
 | :---           | :--- | :---:          |

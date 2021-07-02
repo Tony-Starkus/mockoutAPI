@@ -42,5 +42,5 @@ def build_date(field: dict) -> datetime.date:
 
     if _range:
         date = get_date_between(min_date, max_date)
-    print(f"{type(date.date())=}")
+
     return date.date()

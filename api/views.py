@@ -6,6 +6,7 @@ from .factory.string import build_string
 from .factory.cpf import build_cpf
 from .factory.integer import build_integer
 from .factory.date import build_date
+from .factory.float import build_float
 
 
 class MockoutAPI(APIView):
@@ -41,6 +42,8 @@ class MockoutAPI(APIView):
                             data.update({field['field_name']: build_cpf(field, cpf_list)})
                         elif field['type'] == 'date':
                             data.update({field['field_name']: build_date(field)})
+                        elif field['type'] == 'float':
+                            data.update({field['field_name']: build_float(field)})
 
                     response.append(data)
 
