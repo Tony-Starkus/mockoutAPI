@@ -59,7 +59,7 @@ It's useful when you need many data to test your frontend layout, like tables an
 ```
 
 ### Instalation
-1. Clone the repository.
+1. Clone the repository
 2. Create a python virtual env
 3. Install the packages  
 `$ pip install -r requirements.txt`
@@ -96,8 +96,9 @@ For each type, there is attributes that defines how to build the field data.
 ### string
 | Attribute Name | Type |  Description  |
 | :---           | :--- | :---:          |
+|  length     |  integer | Define a fixed length to string. Default is none.  |
 |  max_length |  integer | Define the string max length. Default is 20. |
-| mask        | string   | Define a mask for the string. Use X letter to replace with a random number. Example: XX-X will be something like 35-7.
+|  mask       | string   | Define a mask for the string. Use X letter to replace with a random number. Example: XX-X will be something like 35-7.
 
 ### int
 | Attribute Name | Type |  Description  |

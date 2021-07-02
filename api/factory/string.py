@@ -3,6 +3,10 @@ from rest_framework.exceptions import ValidationError
 
 
 def values_validation(field: dict) -> None:
+
+    if 'length' in field and type(field['length']) is not int:
+        raise ValidationError("The attribute 'length' must be an integer")
+
     if 'max_length' in field and type(field['max_length']) is not int:
         raise ValidationError("The attribute 'max_length' must be an integer")
 
@@ -10,10 +14,23 @@ def values_validation(field: dict) -> None:
         raise ValidationError("The attribute 'mask' must be a string")
 
 
+def generate_string(min_length: int, max_length: int, random_rage: bool):
+    letters = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+               't', 'u', 'v', 'w', 'x', 'y', 'z')
+    response = ""
+    for i in range(0, randint(0, max_length) if random_rage else max_length):
+        if randint(1, 100) <= 20 and i != 0 and response[i - 1] != " ":
+            response += " "
+        else:
+            response += choice(letters)
+    return response
+
+
 def build_string(field: dict) -> str:
     values_validation(field)
 
-    letters = ('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u')
+    # String length
+    length = field['length'] if 'length' in field else None
 
     # String max length
     max_length = field['max_length'] if 'max_length' in field else 20
@@ -27,13 +44,12 @@ def build_string(field: dict) -> str:
     if mask:
         for p in mask:
             data += str(randint(0, 9)) if p == 'X' else p
-    else:
 
+    elif length:
+        data = generate_string(0, length, False)
+
+    else:
         # Generating random string using letters tuple
-        for i in range(0, randint(0, max_length)):
-            if randint(1, 100) <= 20 and i != 0 and data[i - 1] != " ":
-                data += " "
-            else:
-                data += choice(letters)
+        data = generate_string(0, max_length, True)
 
     return data
